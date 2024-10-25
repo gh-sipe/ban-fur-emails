@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="$language->name">
+<head>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const language = navigator.language.split('-')[0] || 'en';
+            const translations = {
+                fr: {
+                    'home.title': 'Envoyez un email',
+                    'home.h1': 'Envoyez un email : demandez à une marque de bannir la fourrure animale',
+                    'home.choose_a_brand': 'Choisissez une marque :',
+                },
+                en: {
+                    'home.title': 'Send an email',
+                    'home.h1': 'Send an email: Ask a brand to ban animal fur',
+                    'home.choose_a_brand': 'Choose a brand:',
+                }
+            };
+
+            function translate(key, language) {
+                return translations[language] ? translations[language][key] : key;
+            }
+
+            const elements = document.querySelectorAll('[data-translation-id]');
+            elements.forEach(element => {
+                const translationKey = element.getAttribute('data-translation-id');
+                element.textContent = translate(translationKey, language);
+            });
+        });
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title data-translation-id="home.title"></title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+            background-color: #f7f7f7;
+            padding: 20px;
+        }
+        .logo-link {
+            background-color: #fff;
+            display: block;
+            margin: 10px auto 0;
+            padding: 5px 10px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .logo-link > img {
+            margin-top: 10px;
+        }
+        p {
+            margin: 20px 0;
+        }
+        a {
+            color: #333;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 data-translation-id="home.h1"></h1>
+    <h3 data-translation-id="home.choose_a_brand"></h3>
+    targets here
+</div>
+</body>
+</html>
